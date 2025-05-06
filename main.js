@@ -45,11 +45,18 @@ document.getElementById('newTask').onclick = () => {
     
     const taskName = document.createElement('textarea');
     taskName.classList.add('task-name');
-    taskName.id = 'taskNama' + newTaskNumber;
+    taskName.id = 'taskName' + newTaskNumber;
     taskName.setAttribute('rows', '1');
     taskName.oninput = () => taskNameRowsRegulator(taskName);
     taskName.onblur = () => taskRemove(taskName);
     taskArea.appendChild(taskName);
+
+    const removeTask = document.createElement('button');
+    removeTask.id = 'removeTask';
+    removeTask.setAttribute('type', 'button');
+    removeTask.textContent = 'X';
+    removeTask.onclick = () => taskRemove(removeTask)
+    taskArea.appendChild(removeTask);
     
     const dateArea = document.createElement('div');
     dateArea.classList.add('date-info');

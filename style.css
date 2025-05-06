@@ -83,12 +83,22 @@ body {
   color: var(--font-color);
   background-color: var(--primary-color);
   border: 0;
-  width: 90%;
+  width: 85%;
   height: auto;
   resize: none;
   overflow: hidden;
   margin-left: 2.5rem;
   padding: 0;
+}
+
+.task #removeTask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1rem;
+  padding: 0;
+  margin-top: .6rem;
+  margin-right: .5rem;
 }
 
 button {
