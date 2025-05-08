@@ -91,6 +91,11 @@ body {
   padding: 0;
 }
 
+.task .task-name:focus {
+  outline: none;
+  border: 0;
+}
+
 .task #removeTask {
   position: absolute;
   top: 0;
@@ -120,11 +125,14 @@ button:hover {
 .date-info {
   margin: .75rem 0;
   font-size: .75rem;
+  background-color: var(--background-color);
+  width: 7.25rem;
+  border-radius: 4rem;
+  padding: .3rem;
 }
 
-
 .date-info .date-input {
-  background-color: var(--background-color);
+  background-color: inherit;
   color: var(--font-color);
   border-radius: .25rem;
   border: 0;
@@ -132,4 +140,17 @@ button:hover {
   appearance: none;
   margin-right: .5rem;
   margin-left: .2rem;
+  outline: none;
 }
+
+.end-date-icon {
+  height: 1rem;
+  filter: invert(1);
+  margin-right: .25rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+

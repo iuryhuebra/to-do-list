@@ -54,23 +54,26 @@ function taskCreate(tittle='', startDate='', endDate='', status = false) {
     dateArea.classList.add('date-info');
     taskArea.appendChild(dateArea);
     
-    const startDateLabel = document.createElement('label');
-    startDateLabel.setAttribute('for', 'startDate' + newTaskNumber);
-    startDateLabel.textContent = 'Start';
-    dateArea.appendChild(startDateLabel);
-    const startDateInput = document.createElement('input');
-    startDateInput.classList.add('date-input');
-    startDateInput.id = 'startDate' + newTaskNumber;
-    startDateInput.setAttribute('type', 'text');
-    startDateInput.setAttribute('placeholder', 'dd/mm/yyyy');
-    startDateInput.onchange = () => dateValidator(startDateInput);
-    startDateInput.onblur = () => taskSave();
-    startDateInput.value = startDate;
-    dateArea.appendChild(startDateInput);
+    // const startDateLabel = document.createElement('label');
+    // startDateLabel.setAttribute('for', 'startDate' + newTaskNumber);
+    // startDateLabel.textContent = 'Start';
+    // dateArea.appendChild(startDateLabel);
+    // const startDateInput = document.createElement('input');
+    // startDateInput.classList.add('date-input');
+    // startDateInput.id = 'startDate' + newTaskNumber;
+    // startDateInput.setAttribute('type', 'text');
+    // startDateInput.setAttribute('placeholder', 'dd/mm/yyyy');
+    // startDateInput.onchange = () => dateValidator(startDateInput);
+    // startDateInput.onblur = () => taskSave();
+    // startDateInput.value = startDate;
+    // dateArea.appendChild(startDateInput);
     
     const endDateLabel = document.createElement('label');
     endDateLabel.setAttribute('for', 'endDate' + newTaskNumber);
-    endDateLabel.textContent = 'End';
+    const calendarIcon = document.createElement('img');
+    calendarIcon.classList.add('end-date-icon');
+    calendarIcon.src = './img/calendar.png';
+    endDateLabel.appendChild(calendarIcon);
     dateArea.appendChild(endDateLabel);
     const endDateInput = document.createElement('input');
     endDateInput.classList.add('date-input');
@@ -80,6 +83,7 @@ function taskCreate(tittle='', startDate='', endDate='', status = false) {
     endDateInput.onchange = () => dateValidator(endDateInput);
     endDateInput.onblur = () => taskSave();
     endDateInput.value = endDate;
+    endDateInput.autocomplete = 'off';
     dateArea.appendChild(endDateInput);
     
     taskArea.appendChild(document.createElement('hr'));
@@ -91,7 +95,7 @@ function taskSave() {
     const taskLists = { list1: [] };
     document.querySelectorAll('.task-name').forEach((element) => {
         const tittle = element.value;
-        const startDate = document.getElementById('startDate' + currentTask ).value;
+        // const startDate = document.getElementById('startDate' + currentTask ).value;
         const endDate = document.getElementById('endDate' + currentTask).value;
         const status = document.getElementById('taskCheckbox' + currentTask).checked;
         const task = {
