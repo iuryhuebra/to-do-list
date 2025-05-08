@@ -6,7 +6,7 @@ function dateValidator(element) {
     }
 }
 
-function taskCreate(tittle='', startDate='', endDate='', status = false) {
+function taskCreate(tittle='', endDate='', status = false) {
     const newTaskNumber = taskCount();
     const taskArea = document.createElement('div');
     taskArea.classList.add('task');
@@ -34,13 +34,12 @@ function taskCreate(tittle='', startDate='', endDate='', status = false) {
     taskName.onblur = () => {
         if (taskName.value === '') {
             taskName.parentElement.remove();
-        } else {
-            console.log('salvando...');
-            
+        } else {            
             taskSave();
         }
     };
     taskName.value = tittle;
+    taskName.setAttribute("spellcheck", "false");
     taskArea.appendChild(taskName);
 
     const removeTask = document.createElement('button');
@@ -54,22 +53,9 @@ function taskCreate(tittle='', startDate='', endDate='', status = false) {
     dateArea.classList.add('date-info');
     taskArea.appendChild(dateArea);
     
-    // const startDateLabel = document.createElement('label');
-    // startDateLabel.setAttribute('for', 'startDate' + newTaskNumber);
-    // startDateLabel.textContent = 'Start';
-    // dateArea.appendChild(startDateLabel);
-    // const startDateInput = document.createElement('input');
-    // startDateInput.classList.add('date-input');
-    // startDateInput.id = 'startDate' + newTaskNumber;
-    // startDateInput.setAttribute('type', 'text');
-    // startDateInput.setAttribute('placeholder', 'dd/mm/yyyy');
-    // startDateInput.onchange = () => dateValidator(startDateInput);
-    // startDateInput.onblur = () => taskSave();
-    // startDateInput.value = startDate;
-    // dateArea.appendChild(startDateInput);
-    
     const endDateLabel = document.createElement('label');
     endDateLabel.setAttribute('for', 'endDate' + newTaskNumber);
+    endDateLabel.classList.add('end-date-label');
     const calendarIcon = document.createElement('img');
     calendarIcon.classList.add('end-date-icon');
     calendarIcon.src = './img/calendar.png';
@@ -95,12 +81,10 @@ function taskSave() {
     const taskLists = { list1: [] };
     document.querySelectorAll('.task-name').forEach((element) => {
         const tittle = element.value;
-        // const startDate = document.getElementById('startDate' + currentTask ).value;
         const endDate = document.getElementById('endDate' + currentTask).value;
         const status = document.getElementById('taskCheckbox' + currentTask).checked;
         const task = {
             tittle: tittle,
-            startDate: startDate,
             endDate: endDate,
             status: status
         };
@@ -143,7 +127,6 @@ console.log(storage);
 
 storage.list1.forEach((task) => {
     taskCreate(task.tittle,
-        task.startDate,
         task.endDate,
         task.status);
 });

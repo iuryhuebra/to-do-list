@@ -126,9 +126,10 @@ button:hover {
   margin: .75rem 0;
   font-size: .75rem;
   background-color: var(--background-color);
-  width: 7.25rem;
+  width: max-content;
   border-radius: 4rem;
   padding: .3rem;
+  display: flex;
 }
 
 .date-info .date-input {
@@ -136,7 +137,7 @@ button:hover {
   color: var(--font-color);
   border-radius: .25rem;
   border: 0;
-  width: 5rem;
+  width: 4.5rem;
   appearance: none;
   margin-right: .5rem;
   margin-left: .2rem;
@@ -147,6 +148,7 @@ button:hover {
   height: 1rem;
   filter: invert(1);
   margin-right: .25rem;
+  padding-top: 0.1rem;
 }
 
 .buttons {
